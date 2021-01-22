@@ -13,7 +13,7 @@ A = np.array([
     [0, 0, 1]
 ])
 
-B = np.array([T**2/2, T, 1])
+B = np.array([[T**2/2, T, 1]])
 
 H = np.array([[1, 0, 0]])
 
@@ -43,7 +43,6 @@ def simulateKalman(X, s0, M0, sigma_u, sigma_w):
         K[n] = M[n] @ H.T / (C + H @ M[n] @ H.T)
 
         s[n] = s[n] + K[n] * (X[n] - H @ s[n])
-        # M[n] = (np.eye(3) - K[n] @ H) @ M[n]
         
         M[n] = M[n] - (K[n] @ H) @ M[n]
 
@@ -56,7 +55,7 @@ if __name__ == "__main__":
     M0 = np.eye(3)
 
     sigma_w = 1
-    sigma_u = 0#.2**2
+    sigma_u = 0.005**2
 
     ss, M = simulateKalman(X, s0, M0, sigma_u, sigma_w)
 

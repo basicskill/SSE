@@ -111,5 +111,3 @@ if __name__ == "__main__":
     plt.hist(est, density=True, range=(.9, 1.1))
     plt.plot(x, norm.pdf(x, phi, FI))
     plt.show()
-
-
